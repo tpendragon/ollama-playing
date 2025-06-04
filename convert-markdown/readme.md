@@ -476,28 +476,25 @@ I've started by identifying table headers and individual data entries within the
 
 ![image](../harder_to_read_toc.jpg)
 
-## Qwen 32B Instruct
+## Combined 7b + 30B-A3B w/ long prompt
 
-`llama-mtmd-cli -hf ggml-org/Qwen2.5-VL-32B-Instruct-GGUF --image harder_to_read_toc.jpg -p "Always translate any non english text by adding the translation in parenthesis. For example, '北京市宣武区饮食公司 (Beijing Xuanwu District Catering Company)'. Extract the text from this image and convert it to markdown." > 32b-instruct-harder.md`
+`ollama run --verbose hf.co/unsloth/Qwen3-30b-A3B-GGUF:Q4_K_XL "$(cat long_prompt.txt): $(ollama run --verbose qwen2.5vl:7b "Extract the content of this image and create a markdown representation of it: ./harder_to_read_toc.jpg" 2> /dev/null)"`
 
-### 金报县档案馆全宗存放地点索引 (Jinbao County Archives Full Collection Storage Location Index)
-
-| 全宗号 (Full Collection Number) | 全宗名称 (简称) (Full Collection Name (Abbreviation)) | 目录号 (Catalog Number) | 目录名称 (Catalog Name) | 档案起止年度 (Record Year Range) | 档卷数量 (Number of Records) | 存放库号 (Storage Warehouse Number) |
-|----------------------------------|---------------------------------------------|-------------------------|-------------------------|----------------------------------|----------------------------------|-------------------------------------|
-| 67                              | 太平区乡全宗汇集 (Taiping District Full Collection) | 1                       | 太平区 (Taiping District) | 1951 - 1975                      | 总计永久: 113                     | 2                                   |
-|                                |                                             | 2                       | 三圣乡 (Sansheng Township) | 1956 - 1975                      | 总计永久: 159                     | 2                                   |
-|                                |                                             | 3                       | 赤镇乡 (Chizhen Township) | 1957 - 1975                      | 总计永久: 117                     | 2                                   |
-|                                |                                             | 4                       | 卜集乡 (Buji Township)     | 1958 - 1975                      | 总计永久: 71                      | 2                                   |
-|                                |                                             | 5                       | 广平乡 (Guangping Township) | 1957 - 1975                      | 总计永久: 121                     | 2                                   |
-|                                |                                             | 6                       | 小集乡 (Xiaoji Township)   | 1956 - 1975                      | 总计永久: 300                     | 2                                   |
-|                                |                                             | 7                       | 东王乡 (Dongwang Township) | 1949 - 1975                      | 总计永久: 200                     | 2                                   |
-| 68                              | 古河区乡全宗汇集 (Guhe District Full Collection) | 1                       | 古河区 (Guhe District)     | 1952 - 1975                      | 总计永久: 169                     | 2                                   |
-|                                |                                             | 2                       | 古河乡 (Guhe Township)     | 1956 - 1982                      | 总计永久: 71                      | 2                                   |
-|                                |                                             | 3                       | 赤集乡 (Chiji Township)     | 1957 - 1975                      | 总计永久: 133                     | 2                                   |
-|                                |                                             | 4                       | 卜集乡 (Buji Township)     | 1958 - 1975                      | 总计永久: 71                      | 2                                   |
-|                                |                                             | 5                       | 广平乡 (Guangping Township) | 1957 - 1975                      | 总计永久: 121                     | 2                                   |
-|                                |                                             | 6                       | 小集乡 (Xiaoji Township)   | 1956 - 1975                      | 总计永久: 300                     | 2                                   |
-|                                |                                             | 7                       | 东王乡 (Dongwang Township) | 1949 - 1975                      | 总计永久: 200                     | 2                                   |
-|                                |                                             | 8                       | 石溪乡 (Shixi Township)     | 1956 - 1975                      | 总计永久: 156                     | 2                                   |
-```
+| 全宗号 (Collection Number) | 全宗名称(简称) (Collection Name (Abbreviation)) | 目录号 (File Number) | 目录名称 (File Name) | 档案起止年度 (Archive Start and End Years) | 档案卷数量 (Number of Volumes) | 存放库号 (Storage Room Number) |
+| --- | --- | --- | --- | --- | --- | --- |
+| 67 | 太平区乡 (Taiping Township) | 1 | 太平区 (Taiping District) | 1957-1975 | 113 | 2 |
+| 67 | 全宗汇集 (Collection Compilation) | 1 | 三圣乡 (San Sheng Township) | 1957-1975 | 159 | 2 |
+| 67 | 全宗汇集 (Collection Compilation) | 2 | 赤镇乡 (Chi Zhen Township) | 1957-1975 | 133 | 2 |
+| 67 | 全宗汇集 (Collection Compilation) | 3 | 广平乡 (Guang Ping Township) | 1957-1975 | 117 | 2 |
+| 67 | 全宗汇集 (Collection Compilation) | 4 | 卜集乡 (Bu Ji Township) | 1957-1975 | 71 | 2 |
+| 67 | 全宗汇集 (Collection Compilation) | 5 | 小集乡 (Xiao Ji Township) | 1957-1975 | 121 | 2 |
+| 67 | 全宗汇集 (Collection Compilation) | 6 | 东王乡 (Dong Wang Township) | 1949-1975 | 200 | 2 |
+| 67 | 全宗汇集 (Collection Compilation) | 7 | 古河区 (Gu He District) | 1957-1975 | 169 | 2 |
+| 67 | 全宗汇集 (Collection Compilation) | 8 | 古河乡 (Gu He Township) | 1957-1982 | 360 | 2 |
+| 67 | 全宗汇集 (Collection Compilation) | 9 | 蔡集乡 (Cai Ji Township) | 1962-1975 | 186 | 2 |
+| 67 | 全宗汇集 (Collection Compilation) | 10 | 黄集乡 (Huang Ji Township) | 1962-1975 | 99 | 2 |
+| 67 | 全宗汇集 (Collection Compilation) | 11 | 大墅乡 (Da Shu Township) | 1959-1975 | 259 | 2 |
+| 67 | 全宗汇集 (Collection Compilation) | 12 | 章辉乡 (Zhang Hui Township) | 1949-1975 | 81 | 2 |
+| 67 | 全宗汇集 (Collection Compilation) | 13 | 新兴乡 (Xin Xing Township) | 1957-1975 | 186 | 2 |
+| 67 | 全宗汇集 (Collection Compilation) | 14 | 石溪乡 (Shi Xi Township) | 1956-1975 | 156 | 2 |
 
