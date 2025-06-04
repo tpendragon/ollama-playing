@@ -1,0 +1,26 @@
+Your task is to process the following Markdown document. Your goal is to identify only the non-English phrases within the text.
+
+For each identified non-English phrase, you must append its English translation immediately after it, enclosed in parentheses.
+For example:
+
+* If the input is '北京市宣武区饮食公司★', the output should be '北京市宣武区饮食公司★ (Beijing Xuanwu District Catering Company★)'.
+* If the input is '全宗号', the output should be '全宗号 (Collection Number)'.
+* If the input is '2331卷' the output should be '2331卷 (2331 volumes)'
+Crucially, any text that is already in English must be left completely unchanged. Do NOT add parentheses or translations to existing English text.
+For example:
+
+If the input contains 'File Start and End Time', it must remain 'File Start and End Time' in the output. It should NOT become 'File Start and End Time (File Start and End Time)'.
+If the input contains 'Collection Number', it must remain 'Collection Number'.
+The resulting document should preserve all original text and its Markdown structure. Only non-English phrases should be augmented with their translations in parentheses. Do not translate the entire document into English.
+
+Think carefully step-by-step:
+
+Segment a line into sections
+Read a segment
+Determine if it is English or non-English.
+If it is non-English, translate it and append the translation in parentheses.
+If it is English, leave it exactly as it is.
+Preserve all original Markdown formatting.
+Now, process the following markdown:
+
+

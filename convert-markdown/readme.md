@@ -366,6 +366,69 @@ Okay, here's the extracted text from the image, converted to Markdown format, wi
 
 Let me know if you would like any specific information extracted or formatted differently.
 
+## Complex prompt + Combining small models (Qwen 2.5vl:7b + Qwen3-30b-A3B) (1:07)
+
+long_prompt.txt:
+```
+Your task is to process the following Markdown document. Your goal is to identify only the non-English phrases within the text.
+
+For each identified non-English phrase, you must append its English translation immediately after it, enclosed in parentheses.
+For example:
+
+* If the input is '北京市宣武区饮食公司★', the output should be '北京市宣武区饮食公司★ (Beijing Xuanwu District Catering Company★)'.
+* If the input is '全宗号', the output should be '全宗号 (Collection Number)'.
+* If the input is '2331卷' the output should be '2331卷 (2331 volumes)'
+Crucially, any text that is already in English must be left completely unchanged. Do NOT add parentheses or translations to existing English text.
+For example:
+
+If the input contains 'File Start and End Time', it must remain 'File Start and End Time' in the output. It should NOT become 'File Start and End Time (File Start and End Time)'.
+If the input contains 'Collection Number', it must remain 'Collection Number'.
+The resulting document should preserve all original text and its Markdown structure. Only non-English phrases should be augmented with their translations in parentheses. Do not translate the entire document into English.
+
+Think carefully step-by-step:
+
+Segment a line into sections
+Read a segment
+Determine if it is English or non-English.
+If it is non-English, translate it and append the translation in parentheses.
+If it is English, leave it exactly as it is.
+Preserve all original Markdown formatting.
+Now, process the following markdown:
+```
+
+Command:
+
+`ollama run --verbose hf.co/unsloth/Qwen3-30b-A3B-GGUF:Q4_K_XL "$(cat long_prompt.txt): $(ollama run --verbose qwen2.5vl:7b "Extract the content of this image and create a markdown representation of it: ./chinesetoc.jpg" 2> /dev/null)"`
+
+| 全宗号 (Collection Number) | 全宗名称 (Collection Name) | 案卷起止时间 (Case File Start and End Time) | 案卷数量（卷、件） (Case File Quantity (Volumes, Items)) |
+| --- | --- | --- | --- |
+| XW024 | 北京市宣武区饮食公司★ (Beijing Xuanwu District Catering Company★) | 1956~1999 | 2331卷 (2331 volumes) |
+| XW025 | 北京市宣武区土产杂品公司★ (Beijing Xuanwu District Local Products Company★) | 1965~2000 | 1277卷 (1277 volumes) |
+| XW026 | 北京市宣武区广安门外街道 (Beijing Xuanwu District Guang'anmen Subdistrict) | 1958~2010 | 3254卷 (3254 volumes) 2643件 (2643 items) |
+| XW027 | 北京市宣武区副食品公司★ (Beijing Xuanwu District Quasi-Food Company★) | 1957~1999 | 3488卷 (3488 volumes) |
+| XW028 | 北京市宣武区糖业烟酒管理处★ (Beijing Xuanwu District Sugar and Liquor Administration Office★) | 1963~1965 | 115卷 (115 volumes) |
+| XW029 | 北京市宣武区修理公司★ (Beijing Xuanwu District Repair Company★) | 1961~1999 | 1170卷 (1170 volumes) |
+| XW030 | 北京市宣武区教育局 (Beijing Xuanwu District Education Bureau) | 1959~2010 | 3944卷 (3944 volumes) 3467件 (3467 items) |
+| XW031 | 北京市宣武区牛街街道 (Beijing Xuanwu District Niujie Subdistrict) | 1958~2010 | 4163卷 (4163 volumes) 2538件 (2538 items) |
+| XW032 | 北京市宣武区粮食局 (Beijing Xuanwu District Grain Bureau) | 1955~1999 | 2032卷 (2032 volumes) |
+| XW033 | 北京市宣武区煤炭公司★ (Beijing Xuanwu District Coal Company★) | 1955~2002 | 1853卷 (1853 volumes) |
+| XW034 | 北京市宣武区服装公司★ (Beijing Xuanwu District Clothing Company★) | 1973~1999 | 1793卷 (1793 volumes) |
+| XW035 | 北京市宣武区物资回收公司★ (Beijing Xuanwu District Material Recycling Company★) | 1961~1998 | 685卷 (685 volumes) |
+| XW036 | 北京市宣武区工商行政管理局 (Beijing Xuanwu District Administration for Industry and Commerce) | 1970~2010 | 1968卷 (1968 volumes) 1275件 (1275 items) |
+| XW037 | 北京市宣武区劳动和社会保障局 (Beijing Xuanwu District Labor and Social Security Bureau) | 1972~2010 | 3579卷 (3579 volumes) 28220件 (28220 items) |
+| XW038 | 北京市宣武区物资管理局★ (Beijing Xuanwu District Material Management Bureau★) | 1972~1999 | 385卷 (385 volumes) |
+| XW039 | 北京市宣武区技术监督局 (Beijing Xuanwu District Technical Supervision Bureau) | 1972~1996 | 282卷 (282 volumes) |
+| XW040 | 北京市宣武区广安门内街道 (Beijing Xuanwu District Guang'anmen Inner Subdistrict) | 1958~2010 | 5420卷 (5420 volumes) 2828件 (2828 items) |
+| XW041 | 北京市宣武区陶然亭街道 (Beijing Xuanwu District Taoran Pavilion Subdistrict) | 1955~2010 | 4349卷 (4349 volumes) 1733件 (1733 items) |
+| XW042 | 中共北京市宣武区委党校 (Communist Party of Beijing Xuanwu District Committee Party School) | 1967~2010 | 467卷 (467 volumes) 662件 (662 items) |
+| XW043 | 中共北京市宣武区纪律检查委员会 (Disciplinary Inspection Committee of the Communist Party of Beijing Xuanwu District) | 1985~2010 | 867卷 (867 volumes) 1721件 (1721 items) |
+| XW044 | 中国人民政治协商会议北京市宣武区委员会 (Chinese People's Political Consultative Conference Beijing Xuanwu District Committee) | 1956~2010 | 1103卷 (1103 volumes) 3737件 (3737 items) |
+| XW045 | 北京市宣武区人事局机关工作委员会 (Beijing Xuanwu District Personnel Bureau Organs Work Committee) | 1985~2010 | 494卷 (494 volumes) 520件 (520 items) |
+| XW046 | 北京市宣武区机构编制委员会办公室★ (Beijing Xuanwu District Institutional Compilation Committee Office★) | 1985~2009 | 1866卷 (1866 volumes) 2077件 (2077 items) |
+| XW047 | 北京市宣武区档案局（馆） (Beijing Xuanwu District Archives (Museum)) | 1985~2010 | 1088卷 (1088 volumes) 684件 (684 items) |
+| XW048 | 北京市宣武区民政局 (Beijing Xuanwu District Civil Affairs Bureau) | 1985~2010 | 8443卷 (8443 volumes) 1643件 (1643 items) |
+| XW049 | 人物全宗 (Personnel Collection) |  |  |
+
 ## Comparison w/ API: Gemini 2.5 Flash (13s)
 
 **Considering Markdown Conversion**
