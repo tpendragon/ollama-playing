@@ -498,3 +498,27 @@ I've started by identifying table headers and individual data entries within the
 | 67 | 全宗汇集 (Collection Compilation) | 13 | 新兴乡 (Xin Xing Township) | 1957-1975 | 186 | 2 |
 | 67 | 全宗汇集 (Collection Compilation) | 14 | 石溪乡 (Shi Xi Township) | 1956-1975 | 156 | 2 |
 
+## Combined 32b vision + 30B-A3B w/ long prompt
+
+`ollama run --verbose hf.co/unsloth/Qwen3-30b-A3B-GGUF:Q4_K_XL "$(cat long_prompt.txt): $(ollama run --verbose qwen2.5vl:32b "Extract the content of this image and create a markdown representation of it: ./harder_to_read_toc.jpg" 2> /dev/null)"`
+
+| 全宗号 (Collection Number) | 全宗名称（简称） (Collection Name (Abbreviation)) | 目录号 (File Number) | 目录名称 (File Name) | 档案起止年度 (Archive Start and End Years) | 案卷数量 (Number of Case Volumes) | 存放库房 (Storage Room) |
+|--------|------------------|--------|----------|-------------|----------|----------|
+|        |                  |        |          | 总计 (Total) | 永久 (Permanent) | 长期 (Long-term) | 库号 (Storage Room Number) |
+| 67     | 太平区乡全宗汇编 (Taiping District Rural Collection Compilation) | 1      | 太平区 (Taiping District) | 1951-1975  | 113     |          |          | 2      |
+|        |                  | 2      | 三王乡 (Sanwang Township) | 1956-1975  | 159     |          |          | 2      |
+|        |                  | 3      | 赤镇乡 (Chizhen Township) | 1957-1975  | 133     |          |          | 2      |
+|        |                  | 4      | 卜集乡 (Bujie Township) | 1958-1975  | 71      |          |          | 2      |
+|        |                  | 5      | 广平乡 (Guangping Township) | 1957-1975  | 117     |          |          | 2      |
+|        |                  | 6      | 小集乡 (Xiaoji Township) | 1957-1975  | 121     |          |          | 2      |
+|        |                  | 7      | 东王乡 (Dongwang Township) | 1949-1975  | 200     |          |          | 2      |
+| 68     | 古河区乡全宗汇编 (Guhé District Rural Collection Compilation) | 1      | 古河区 (Guhé District) | 1952-1975  | 169     |          |          | 2      |
+|        |                  | 2      | 古河乡 (Guhé Township) | 1956-1982  | 360     |          |          | 2      |
+|        |                  | 3      | 萧集乡 (Xiaoji Township) | 1962-1975  | 186     |          |          | 2      |
+|        |                  | 4      | 黄集乡 (Huangji Township) | 1962-1975  | 99      |          |          | 2      |
+|        |                  | 5      | 大墅乡 (Dashi Township) | 1959-1975  | 259     |          |          | 2      |
+|        |                  | 6      | 章辉乡 (Zhanghui Township) | 1949-1975  | 81      |          |          | 2      |
+|        |                  | 7      | 新兴乡 (Xinxing Township) | 1957-1975  | 186     |          |          | 2      |
+|        |                  | 8      | 石溪乡 (Shixi Township) | 1956-1975  | 156     |          |          | 2      |
+
+
