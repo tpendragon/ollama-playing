@@ -1,0 +1,43 @@
+You are a professional researcher. Given the below professional metadata and an LLM-generated
+(and thus less accurate than metadata) description of the item below, create a
+summary of what the object is representing and any key figures or time periods
+it might be referencing.
+
+## metadata
+
+title: Το ΠΑΣΟΚ συνιστά: απομεταρρύθμιση παντού ΟΝΝΕΔ
+creator: [Nea Dēmokratia (Greece)]
+subject: elections
+Date created: 1986 - 1990 (approximate)
+Keywords: Panellēnio Sosialistiko Kinēma (Greece), Nea Dēmokratia (Greece)
+
+## LLM Summary of Image
+
+Here's a detailed description of the poster, aimed at someone who is blind:
+
+**Overall Impression:**
+
+The poster has a vintage, slightly distressed aesthetic, like an old political flyer. It's primarily a muted beige/tan color,
+with dark lettering and a prominent red floral arrangement.
+
+**Visual Elements:**
+
+*   **Floral Arrangement:** At the center is a cluster of vibrant red roses, but they appear to be in a state of decay. The
+petals are wilted, curling at the edges, and some are falling off. There's a lot of foliage—green leaves and stems—intermixed
+with the roses, but those leaves are also drooping and appear dry. The roses are positioned a bit off-center.
+*   **Text:** There is a lot of text. The top of the poster features text in all capitals, as does the bottom. In the middle
+there is a mix of all capitals and cursive.
+    *   At the top, the words “ΤΟ ΠΑΣΟΚ ΣΥΝΙΣΤΑ:" are aligned to the left in bold, black, capital letters.
+    *   In the middle, the text "ΑΠΟΜΕΤΑΡΡΥΘΜΙΣΗ ΠΑΝΤΟΥ" is in large, bold, black, capital letters. Overlaid on top of this text
+in sweeping, red cursive is the word "ΑΠΟ".
+    *   At the bottom, in smaller, black, capital letters, is the word "ΟΝΝΕΔ".
+*   **Background:** The background is a solid, slightly textured beige/tan color.
+*   **Borders:** A dark, rectangular border frames the entire poster.
+
+**Overall Composition:**
+
+The floral arrangement is the most visually striking element, but the text dominates the space. The text and the flower
+arrangement are overlapping. The muted background and dark border create a strong contrast, drawing the eye to the center of the
+poster.
+
+/nothink
